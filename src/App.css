@@ -1,0 +1,26 @@
+:root {
+  --p-color: #005bb3;
+  --bg-color: #ffffff;
+  --text-color: #444a55;
+  --input-color: #a7b1c1;
+  --placeholder-color: #91969e;
+  --input-hover-color: #70747a;
+  --btn-hover-color: #024b90;
+  --font-family: "Gill Sans", sans-serif;
+  --h1-font: clamp(1.4em, 4vw, 1.7em);
+  --h2-font: clamp(1.3em, 4vw, 1.5em);
+  --h-text-font: clamp(1em, 2vw, 1.2em);
+  --heading-font: clamp(1.7em, 6vw, 2.7em);
+  --text-font: clamp(1em, 2vw, 1.1em);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #d5d4d4;
+  max-height: 100vh;
+}
