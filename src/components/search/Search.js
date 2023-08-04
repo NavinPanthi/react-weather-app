@@ -8,14 +8,45 @@ const Search = ({ onSearchChange }) => {
     onSearchChange(searchData);
   };
   const loadOptions = async (inputValue) => {
-    try {
-      const response = await fetch(geo_api_url, geoApiOptions);
-      const result = await response.text();
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
+    return fetch(
+      `${geo_api_url}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+      geoApiOptions
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        return {
+          options: response.data.map((city) => {
+            return {
+              value: `${city.latitude} ${city.longitude}`,
+              label: `${city.name}, ${city.countryCode}`,
+            };
+          }),
+        };
+      })
+      .catch((err) => console.error(err));
   };
+  // const loadOptions = async (inputValue) => {
+  //   try {
+  //     const response = await fetch(`${geo_api_url}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions);
+
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+
+  //     const data = await response.json();
+
+  //     // Assuming the API response data is an array of objects, and each object has an "id" and "name" property
+  //     const options = data.map((item) => ({
+  //       value: item.id, // Use an appropriate property from the API response as the option value
+  //       label: item.name, // Use an appropriate property from the API response as the option label
+  //     }));
+
+  //     return { options }; // Return the options array inside an object with "options" prop
+  //   } catch (error) {
+  //     console.error(error);
+  //     return { options: [] }; // Return an empty array in case of an error
+  //   }
+  // };
   return (
     <AsyncPaginate
       placeholder="Search for a city."
