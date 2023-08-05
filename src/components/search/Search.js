@@ -27,18 +27,21 @@ const Search = ({ onSearchChange }) => {
   };
   // const loadOptions = async (inputValue) => {
   //   try {
-  //     const response = await fetch(`${geo_api_url}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions);
+  //     const response = await fetch(
+  //       `${geo_api_url}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+  //       geoApiOptions
+  //     );
 
   //     if (!response.ok) {
-  //       throw new Error('Network response was not ok');
+  //       throw new Error("Network response was not ok");
   //     }
 
   //     const data = await response.json();
 
   //     // Assuming the API response data is an array of objects, and each object has an "id" and "name" property
-  //     const options = data.map((item) => ({
-  //       value: item.id, // Use an appropriate property from the API response as the option value
-  //       label: item.name, // Use an appropriate property from the API response as the option label
+  //     const options = data.map((city) => ({
+  //       value: `${city.latitude} ${city.longitude}`, // Use an appropriate property from the API response as the option value
+  //       label: `${city.name}, ${city.countryCode}`, // Use an appropriate property from the API response as the option label
   //     }));
 
   //     return { options }; // Return the options array inside an object with "options" prop
