@@ -1,0 +1,16 @@
+.day{
+
+    flex:1 1;
+}
+.grid-item{
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    line-height: 90%;
+}
+.grid-item label:first-child{
+    color: rgb(109, 112, 113);
+    font-weight: 500;
+}

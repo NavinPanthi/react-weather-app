@@ -1,6 +1,7 @@
 import Search from "./components/search/Search";
 import "./App.css";
 import CurrentWeather from "./components/current-weather/CurrentWeather";
+import Forecast from "./components/forecast/Forecast";
 import { weather_api_key, weather_api_url } from "./Api";
 import { useState } from "react";
 
@@ -18,8 +19,8 @@ function App() {
       .then(async (response) => {
         const weatherResponse = await response[0].json();
         const forecastResponse = await response[1].json();
-        setCurrentWeather({ city: searchData.label, weatherResponse });
-        setForecast({ city: searchData.label, forecastResponse });
+        setCurrentWeather({ city: searchData.label, ...weatherResponse });
+        setForecast({ city: searchData.label, ...forecastResponse });
       })
       .catch((err) => console.log(err));
     console.log(forecast);
@@ -29,6 +30,7 @@ function App() {
     <div className="App container">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
+      {forecast && <Forecast data={forecast} />}
     </div>
   );
 }
